@@ -33,5 +33,6 @@ public class Runner {
         }
         System.out.println("Enum ismi : " + strength.name());
         System.out.println("Enum sirasi : " + strength.ordinal());
+        System.out.println("Enum level : " +strength.getLevel());
     }
 }
