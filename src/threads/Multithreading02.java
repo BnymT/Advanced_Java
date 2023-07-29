@@ -2,11 +2,11 @@ package threads;
 
 public class Multithreading02 {
 
-    public static volatile int counter=0;
+    public static volatile int counter = 0;
 
     public static void main(String[] args) {
 
-        Thread thread1=new Thread(new Runnable() {
+        Thread thread1 = new Thread(new Runnable() {
             @Override
             public void run() {
                 System.out.println("bazı kodlar");
@@ -25,7 +25,7 @@ public class Multithreading02 {
 //            throw new RuntimeException(e);
 //        }
 
-        Thread thread2=new Thread(new Runnable() {
+        Thread thread2 = new Thread(new Runnable() {
             @Override
             public void run() {
                 System.out.println("farklı kodlar");
@@ -38,19 +38,18 @@ public class Multithreading02 {
         thread2.start();
 
 
-
-
     }
 }
-class Counter01{
+
+class Counter01 {
 
     //synchronized  ile threadlerin metoda erişmesini sıraya koymuş olduk
     //metod içine sadece 1 thread girebilsin
-    public synchronized static void count(){
+    public synchronized static void count() {
 
-        for (int i=1;i<=1000;i++){
+        for (int i = 1; i <= 1000; i++) {
             Multithreading02.counter++;//1000
-            System.out.println(Thread.currentThread().getName()+" ---> counter :"+Multithreading02.counter);
+            System.out.println(Thread.currentThread().getName() + " ---> counter :" + Multithreading02.counter);
         }
 
     }

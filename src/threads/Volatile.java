@@ -17,23 +17,23 @@ package threads;
 
 public class Volatile {
 
-    public static volatile int flag=0;//flag değerinin main memorye yazılıp main memoryden okunmasını garanit eder.
+    public static volatile int flag = 0;//flag değerinin main memorye yazılıp main memoryden okunmasını garanit eder.
 
     public static void main(String[] args) {
 
-       Thread thread1=new Thread(new Runnable() {//core1
-           @Override
-           public void run() {
+        Thread thread1 = new Thread(new Runnable() {//core1
+            @Override
+            public void run() {
 
-               while (flag==0){
-                   System.out.println("Multithreading uygulamalar harika:)");
-               }
+                while (flag == 0) {
+                    System.out.println("Multithreading uygulamalar harika:)");
+                }
 
-           }
-       });
-       thread1.start();
+            }
+        });
+        thread1.start();
 
-        Thread thread2=new Thread(new Runnable() {//core2
+        Thread thread2 = new Thread(new Runnable() {//core2
             @Override
             public void run() {
                 try {
@@ -46,8 +46,6 @@ public class Volatile {
             }
         });
         thread2.start();
-
-
 
 
     }

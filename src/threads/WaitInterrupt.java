@@ -6,13 +6,13 @@ package threads;
 //wait-notify: threadler arasında iletişimi sağlar
 public class WaitInterrupt {
 
-    public static int balance=0;
+    public static int balance = 0;
 
     public static void main(String[] args) {
 
-        WaitInterrupt obj=new WaitInterrupt();
+        WaitInterrupt obj = new WaitInterrupt();
 
-        Thread thread1=new Thread(new Runnable() {
+        Thread thread1 = new Thread(new Runnable() {
             @Override
             public void run() {
                 obj.withdraw(1000);
@@ -21,7 +21,7 @@ public class WaitInterrupt {
         thread1.setName("tüketici");//consumer
         thread1.start();
 
-        Thread thread2=new Thread(new Runnable() {
+        Thread thread2 = new Thread(new Runnable() {
             @Override
             public void run() {
                 try {
@@ -37,14 +37,13 @@ public class WaitInterrupt {
         thread2.start();
 
 
-
     }
 
     //para çekme
-    public synchronized void withdraw(int amount){
-        System.out.println(Thread.currentThread().getName()+" para çekmek istiyor.");
-        if(balance<=0 || balance<amount){
-            System.out.println("Bakiye yetersiz, mevcut bakiye: "+balance);
+    public synchronized void withdraw(int amount) {
+        System.out.println(Thread.currentThread().getName() + " para çekmek istiyor.");
+        if (balance <= 0 || balance < amount) {
+            System.out.println("Bakiye yetersiz, mevcut bakiye: " + balance);
             System.out.println("Bakiyenin güncellenmesi bekleniyor...");
             try {
                 wait();//interrupt metodu çağrıldığında bekleme kesilir ve InterruptedException fırlatılır
@@ -54,21 +53,21 @@ public class WaitInterrupt {
             }
         }
 
-        if (amount<=balance){
-            balance=balance-amount;
-            System.out.println("Para çekme işlemi başarıyla tamamlandı. Mevcut bakiye:"+balance);
+        if (amount <= balance) {
+            balance = balance - amount;
+            System.out.println("Para çekme işlemi başarıyla tamamlandı. Mevcut bakiye:" + balance);
 
-        }else {
-            System.out.println("Bakiye yetersiz, mevcut bakiye: "+balance);
+        } else {
+            System.out.println("Bakiye yetersiz, mevcut bakiye: " + balance);
             System.out.println("Bugün git, yarın gel...");
         }
 
     }
 
     //para yatırma
-    public synchronized void deposit(int amount){
-        System.out.println(Thread.currentThread().getName()+" para yatırmak istiyor.");
-        balance=balance+amount;
-        System.out.println("Para yatırma işlemi başarıyla gerçekleşti. Mevcut bakiye: "+balance);
+    public synchronized void deposit(int amount) {
+        System.out.println(Thread.currentThread().getName() + " para yatırmak istiyor.");
+        balance = balance + amount;
+        System.out.println("Para yatırma işlemi başarıyla gerçekleşti. Mevcut bakiye: " + balance);
     }
 }

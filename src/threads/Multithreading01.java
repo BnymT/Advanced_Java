@@ -15,9 +15,9 @@ public class Multithreading01 {
 
         System.out.println("---------------------MultiThreading------------------------------");
 
-        long startTime=System.currentTimeMillis();
-        CounterWithMultiThread counter3=new CounterWithMultiThread("Süleyman");
-        CounterWithMultiThread counter4=new CounterWithMultiThread("Hasan");
+        long startTime = System.currentTimeMillis();
+        CounterWithMultiThread counter3 = new CounterWithMultiThread("Süleyman");
+        CounterWithMultiThread counter4 = new CounterWithMultiThread("Hasan");
         counter3.start();
         counter4.start();
 
@@ -40,18 +40,15 @@ public class Multithreading01 {
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-        long finishTime=System.currentTimeMillis();
+        long finishTime = System.currentTimeMillis();
 
-        System.out.println("MultiThreading ile geçen süre: "+(finishTime-startTime));//5138
-
-
-
-
+        System.out.println("MultiThreading ile geçen süre: " + (finishTime - startTime));//5138
 
 
     }
 }
-class Counter{
+
+class Counter {
 
     private String name;
 
@@ -61,19 +58,20 @@ class Counter{
     }
 
     //thread kullanmadan 1..10 kadar yazdırma
-    public void countMe(){
-        for(int i=1;i<=10;i++){
+    public void countMe() {
+        for (int i = 1; i <= 10; i++) {
             try {
                 Thread.sleep(500);//main thread 0.5 sn uyusun
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
-            System.out.println(i+" - "+name);
+            System.out.println(i + " - " + name);
         }
     }
 
 }
-class CounterWithMultiThread extends Thread{
+
+class CounterWithMultiThread extends Thread {
 
     private String name;
 
@@ -86,14 +84,14 @@ class CounterWithMultiThread extends Thread{
         countMe();
     }
 
-    public void countMe(){
-        for(int i=1;i<=10;i++){
+    public void countMe() {
+        for (int i = 1; i <= 10; i++) {
             try {
                 Thread.sleep(500);//main thread 0.5 sn uyusun
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
-            System.out.println(i+" - "+name);
+            System.out.println(i + " - " + name);
         }
     }
 }
